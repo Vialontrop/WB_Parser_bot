@@ -5,13 +5,18 @@ from aiogram.filters import Command
 from aiogram.types import Message, BufferedInputFile
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
-from parser import parse_wildberries  # Импортируем функцию парсера
+from parser import parse_wildberries
+from dotenv import load_dotenv  # Для загрузки переменных окружения
+import os  # Для доступа к переменным окружения
+
+# Загрузка переменных окружения из файла .env
+load_dotenv()
 
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
 
-# Токен вашего бота
-API_TOKEN = '7869041656:AAHflRmOCs28B_7-y8THO9rI7nbkoV6Fweo'
+# Получение токена из переменной окружения
+API_TOKEN = os.getenv("API_TOKEN")
 
 # Инициализация бота и диспетчера
 bot = Bot(token=API_TOKEN)
